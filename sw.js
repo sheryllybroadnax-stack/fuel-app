@@ -1,0 +1,3 @@
+const C='fuel-v17-google-drive-backup',A=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png','./fuel-logo.png'];self.addEventListener('install',e=>e.waitUntil(caches.open(C).then(c=>c.addAll(A))));self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request))));
+
+self.addEventListener('periodicsync',e=>{if(e.tag==='daily-verse')e.waitUntil(self.registration.showNotification('Daily Bible Verse',{body:'Open My Bible Dictionary for today’s KJV verse.',icon:'icon-192.png'}))});self.addEventListener('notificationclick',e=>{e.notification.close();e.waitUntil(clients.openWindow('./index.html'))});
